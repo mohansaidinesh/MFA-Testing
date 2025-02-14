@@ -7,14 +7,11 @@ confirm_password=st.text_input('Confirm Password',type='password')
 
 if st.button('Change Password'):
     try:
-        if valid_email(email):
-            if password==confirm_password:
-                update_password(email,password)
-                st.success('Password Changed Successfully')
-            else:
-                st.error('Password and Confirm Password should be same')
+        if password==confirm_password:
+            update_password(email,password)
+            st.success('Password Changed Successfully')
         else:
-            st.error('Invalid Email')
+            st.error('Password and Confirm Password should be same')
     except Exception as e:
         st.error(e)
         
