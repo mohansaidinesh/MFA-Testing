@@ -2,15 +2,6 @@ import streamlit as st
 import re
 from db_manager import register_user
 import requests
-import pyowm
-owm = pyowm.OWM('11081b639d8ada3e97fc695bcf6ddb20')
-def valid_location(city):
-    mgr = owm.weather_manager()
-    try:
-        observation = mgr.weather_at_place(city)
-        return True
-    except:
-        return False
 def register_page():
 
     st.markdown(
@@ -54,8 +45,6 @@ def register_page():
             email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
             if not re.match(email_regex, email):
                 st.error("Invalid Email!")
-            elif not valid_location(location):
-                st.error("Invalid Location!")
             elif len(password) < 6:
                 st.error("Password must be at least 6 characters long!")
             elif password != retype_password:
