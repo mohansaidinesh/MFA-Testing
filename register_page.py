@@ -2,7 +2,6 @@ import streamlit as st
 import re
 from db_manager import register_user
 import requests
-from bs4 import BeautifulSoup
 import pyowm
 owm = pyowm.OWM('11081b639d8ada3e97fc695bcf6ddb20')
 def valid_location(city):
