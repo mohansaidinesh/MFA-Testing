@@ -30,15 +30,16 @@ def forgot_password_page():
     st.title("Forgot Password")
     st.write("Enter your email address to reset your password")
     email = st.text_input("Email")
-    if valid_email(email) and st.button("Reset Password"):
-        subject = 'Password Reset for Crop Recommendation System'
-        url='https://password-change-option.streamlit.app/'
-        message = f'Click on the link to reset your password: {url}'
-        from_email = 'noreply.234878978@gmail.com'
-        from_password = 'usyv gsti xpcg rgai'  
-
-        # Send the alert email
-        send_alert_email(email, subject, message, from_email, from_password)
-        st.success("Password reset link has been sent to your email address")
-    else:
-        st.error("Invalid email address. Please enter a valid email address")
+    if st.button("Reset Password"):
+        if valid_email(email):
+            subject = 'Password Reset for Crop Recommendation System'
+            url='https://password-change-option.streamlit.app/'
+            message = f'Click on the link to reset your password: {url}'
+            from_email = 'noreply.234878978@gmail.com'
+            from_password = 'usyv gsti xpcg rgai'  
+    
+            # Send the alert email
+            send_alert_email(email, subject, message, from_email, from_password)
+            st.success("Password reset link has been sent to your email address")
+        else:
+            st.error("Invalid email address. Please enter a valid email address")
