@@ -5,22 +5,11 @@ import pickle
 import joblib
 user=st.session_state['user']
 city=user[3]
-import pyowm
-owm = pyowm.OWM('11081b639d8ada3e97fc695bcf6ddb20')
-try:
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place(city)
-    weather = observation.weather
-    temp = weather.temperature('celsius')['temp']
-    humd = weather.humidity
-    sky = weather.detailed_status
-    rain = weather.rain.get('1h', 0)
-except:
-    st.write(city)
-    temp=25
-    humd=50
-    sky='Snow'
-    rain=100
+st.write(city)
+temp=25
+humd=50
+sky='Snow'
+rain=100
 def seasonal():
     
     st.markdown(
