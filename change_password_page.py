@@ -13,6 +13,8 @@ if st.button('Change Password'):
                 st.success('Password Changed Successfully')
             else:
                 st.error('Password and Confirm Password should be same')
+        else:
+            st.error('Invalid Email')
     except Exception as e:
         st.error(e)
         
